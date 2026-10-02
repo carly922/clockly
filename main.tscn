@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cob5t5ou2vwcd"]
+
+[ext_resource type="Script" uid="uid://bukpgo5iapqr8" path="res://time_date_display.gd" id="1_ig7tw"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_0xm2m"]
+script/source = "using Godot;
+using System;
+
+
+public partial class Main : Node3D
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		
+	}
+}
+"
+
+[sub_resource type="Environment" id="Environment_nobey"]
+background_mode = 1
+
+[node name="Node3D" type="Node3D" unique_id=1571803835]
+script = SubResource("CSharpScript_0xm2m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1898459613]
+environment = SubResource("Environment_nobey")
+
+[node name="Camera3D" type="Camera3D" parent="WorldEnvironment" unique_id=1701200811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4288336, 1.3271642)
+
+[node name="TimeDateDisplay" type="Label3D" parent="." unique_id=135122510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0775629, 0)
+text = "test text"
+script = ExtResource("1_ig7tw")
+
+[node name="Timer" type="Timer" parent="." unique_id=1973281409]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="TimeDateDisplay" method="_on_timer_timeout"]
